@@ -145,3 +145,33 @@ if ($Mode -eq "CreateVpn" -Or $Mode -eq "All") {
         -ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName `
         -TemplateFile $onPremiseConnectionTemplateFile -TemplateParameterFile $onpremiseConnectionParametersFile
 }
+
+if ($Mode -eq "AzureADDS" -Or $Mode -eq "All") {
+    # Add the replication site.
+    $onpremiseNetworkResourceGroup = Get-AzureRmResourceGroup -Name $onpremiseNetworkResourceGroupName
+    Write-Host "Creating ADDS replication site..."
+    New-AzureRmResourceGroupDeployment -Name "ra-adds-site-replication-deployment" `
+        -ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName `
+        -TemplateUri $virtualMachineExtensionsTemplate.AbsoluteUri -TemplateParameterFile $onpremiseReplicationSiteForestExtensionParametersFile
+
+    # # Deploy AD tier
+    # Write-Host "Creating ADDS resource group..."
+    # $addsResourceGroup = New-AzureRmResourceGroup -Name $addsResourceGroupName -Location $Location
+
+    # Write-Host "Deploying ADDS servers..."
+    # New-AzureRmResourceGroupDeployment -Name "ra-adds-adds-deployment" -ResourceGroupName $addsResourceGroup.ResourceGroupName `
+    #     -TemplateUri $virtualMachineTemplate.AbsoluteUri -TemplateParameterFile $azureAddsVirtualMachinesParametersFile
+
+    $azureNetworkResourceGroup = Get-AzureRmResourceGroup -Name $azureNetworkResourceGroupName
+    # Update DNS server to point to onpremise and azure
+    Write-Host "Updating virtual network DNS..."
+    New-AzureRmResourceGroupDeployment -Name "ra-adds-vnet-onpremise-azure-dns-deployment" `
+        -ResourceGroupName $azureNetworkResourceGroup.ResourceGroupName `
+        -TemplateUri $virtualNetworkTemplate.AbsoluteUri -TemplateParameterFile $azureVirtualNetworkOnpremiseAndAzureDnsParametersFile
+
+    # Join the domain and create DCs
+    Write-Host "Creating ADDS domain controllers..."
+    New-AzureRmResourceGroupDeployment -Name "ra-adds-adds-dc-deployment" `
+        -ResourceGroupName $addsResourceGroup.ResourceGroupName `
+        -TemplateUri $virtualMachineExtensionsTemplate.AbsoluteUri -TemplateParameterFile $azureAddAddsDomainControllerExtensionParametersFile
+}
