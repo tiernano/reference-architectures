@@ -136,14 +136,14 @@ if ($Mode -eq "CreateVpn" -Or $Mode -eq "All") {
     # DEV: Once the above is working.. Then the following should add it to the existing ra-sp2016
 
 
-    Write-Host "Deploying Azure Virtual Network Gateway..."
-    New-AzureRmResourceGroupDeployment -Name "ra-adds-vpn-gateway-deployment" -ResourceGroupName $azureNetworkResourceGroup.ResourceGroupName `
-        -TemplateUri $virtualNetworkGatewayTemplate.AbsoluteUri -TemplateParameterFile $azureVirtualNetworkGatewayParametersFile
+    # Write-Host "Deploying Azure Virtual Network Gateway..."
+    # New-AzureRmResourceGroupDeployment -Name "ra-adds-vpn-gateway-deployment" -ResourceGroupName $azureNetworkResourceGroup.ResourceGroupName `
+    #     -TemplateUri $virtualNetworkGatewayTemplate.AbsoluteUri -TemplateParameterFile $azureVirtualNetworkGatewayParametersFile
 
-    Write-Host "Creating Onpremise connection..."
-    New-AzureRmResourceGroupDeployment -Name "ra-adds-onpremise-connection-deployment" `
-        -ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName `
-        -TemplateFile $onPremiseConnectionTemplateFile -TemplateParameterFile $onpremiseConnectionParametersFile
+    # Write-Host "Creating Onpremise connection..."
+    # New-AzureRmResourceGroupDeployment -Name "ra-adds-onpremise-connection-deployment" `
+    #     -ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName `
+    #     -TemplateFile $onPremiseConnectionTemplateFile -TemplateParameterFile $onpremiseConnectionParametersFile
 }
 
 if ($Mode -eq "AzureADDS" -Or $Mode -eq "All") {
