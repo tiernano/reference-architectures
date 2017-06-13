@@ -15,9 +15,9 @@
               "autoUpgradeMinorVersion": true,
               "settingsConfigMapperUri": "https://raw.githubusercontent.com/mspnp/template-building-blocks/v1.0.0/templates/resources/Microsoft.Compute/virtualMachines/extensions/vm-extension-passthrough-settings-mapper.json",
               "settingsConfig": {
-                "Name": "contoso.com",
+                "Name": "contoso.local",
                 "OUPath": "",
-                "User": "contoso.com\\testuser",
+                "User": "contoso.local\\testuser",
                 "Restart": true,
                 "Options": 3
               },
@@ -34,7 +34,7 @@
               "settingsConfigMapperUri": "https://raw.githubusercontent.com/mspnp/reference-architectures/master/identity/adds-extend-domain/templates/onpremise/adds-domain-controller-extension-settings-mapper.json",
               "settingsConfig": {
                 "activeDirectorySettings": {
-                  "domainName": "contoso.com",
+                  "domainName": "contoso.local",
                   "adminUser": "testuser",
                   "adminPassword": "AweS0me@PW",
                   "siteName": "Azure-Vnet-Site",
