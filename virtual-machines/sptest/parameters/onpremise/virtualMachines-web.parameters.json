@@ -4,7 +4,7 @@
   "parameters": {
     "virtualMachinesSettings": {
       "value": {
-        "namePrefix": "ra-adds-onpremise",
+        "namePrefix": "ra-web-onpremise",
         "computerNamePrefix": "web",
         "size": "Standard_DS1_v2",
         "osType": "Windows",
@@ -15,7 +15,6 @@
           {
             "isPublic": "true",
             "subnetName": "web",
-            "publicIPAllocationMethod": "dynamic",
             "privateIPAllocationMethod": "Static",
             "startingIPAddress": "192.168.1.4",
             "enableIPForwarding": false,
@@ -44,7 +43,7 @@
         "extensions": [ ],
         "availabilitySet": {
           "useExistingAvailabilitySet": "No",
-          "name": "ra-adds-onpremise-as"
+          "name": "ra-web-onpremise-as"
         }
       }
     },
