@@ -81,17 +81,17 @@ Login-AzureRmAccount -SubscriptionId $SubscriptionId | Out-Null
 if ($Mode -eq "Onpremise" -Or $Mode -eq "All") {
     $onpremiseNetworkResourceGroup = New-AzureRmResourceGroup -Name $onpremiseNetworkResourceGroupName -Location $Location
 
-    Write-Host "Creating onpremise virtual network..."
-    New-AzureRmResourceGroupDeployment -Name "ra-adds-onpremise-vnet-deployment" `
-        -ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName -TemplateUri $virtualNetworkTemplate.AbsoluteUri `
-        -TemplateParameterFile $onpremiseVirtualNetworkParametersFile
+    # Write-Host "Creating onpremise virtual network..."
+    # New-AzureRmResourceGroupDeployment -Name "ra-adds-onpremise-vnet-deployment" `
+    #     -ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName -TemplateUri $virtualNetworkTemplate.AbsoluteUri `
+    #     -TemplateParameterFile $onpremiseVirtualNetworkParametersFile
 
-    Write-Host "Deploying ADDS servers..."
-    New-AzureRmResourceGroupDeployment -Name "ra-adds-onpremise-adds-deployment" `
-        -ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName `
-        -TemplateUri $virtualMachineTemplate.AbsoluteUri -TemplateParameterFile $onpremiseADDSVirtualMachinesParametersFile
+    # Write-Host "Deploying ADDS servers..."
+    # New-AzureRmResourceGroupDeployment -Name "ra-adds-onpremise-adds-deployment" `
+    #     -ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName `
+    #     -TemplateUri $virtualMachineTemplate.AbsoluteUri -TemplateParameterFile $onpremiseADDSVirtualMachinesParametersFile
 
-    Write-Host "Deploying User machine..."
+    Write-Host "Deploying Web  machine..."
     New-AzureRmResourceGroupDeployment -Name "ra-adds-onpremise-user-deployment" `
         -ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName `
         -TemplateUri $virtualMachineTemplate.AbsoluteUri -TemplateParameterFile $onpremiseWebVirtualMachinesParametersFile
