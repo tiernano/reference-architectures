@@ -4,8 +4,8 @@
   "parameters": {
     "virtualMachinesSettings": {
       "value": {
-        "namePrefix": "ra-adds-onpremise",
-        "computerNamePrefix": "ad",
+        "namePrefix": "ra-user-onpremise",
+        "computerNamePrefix": "user",
         "size": "Standard_DS3_v2",
         "osType": "Windows",
         "adminUsername": "testuser",
@@ -13,7 +13,7 @@
         "osAuthenticationType": "password",
         "nics": [
           {
-            "isPublic": "false",
+            "isPublic": "true",
             "subnetName": "adds",
             "privateIPAllocationMethod": "Static",
             "startingIPAddress": "192.168.0.4",
