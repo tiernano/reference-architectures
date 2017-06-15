@@ -134,31 +134,31 @@ if ($Mode -eq "CreateVpn" -Or $Mode -eq "All") {
     $onpremiseNetworkResourceGroup = Get-AzureRmResourceGroup -Name $onpremiseNetworkResourceGroupName
     $azureNetworkResourceGroup = Get-AzureRmResourceGroup -Name $azureNetworkResourceGroupName
 
-    # Write-Host "Deploying Onpremise Virtual Network Gateway..."
-    # New-AzureRmResourceGroupDeployment -Name "ra-adds-onpremise-vpn-gateway-deployment" `
-    #     -ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName `
-    #     -TemplateFile $onPremiseVirtualNetworkGatewayTemplateFile -TemplateParameterFile $onpremiseVirtualNetworkGatewayParametersFile
+    Write-Host "Deploying Onpremise Virtual Network Gateway..."
+    New-AzureRmResourceGroupDeployment -Name "ra-adds-onpremise-vpn-gateway-deployment" `
+        -ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName `
+        -TemplateFile $onPremiseVirtualNetworkGatewayTemplateFile -TemplateParameterFile $onpremiseVirtualNetworkGatewayParametersFile
 
-    # # DEV: Once the above is working.. Then the following should add it to the existing ra-sp2016
+    # DEV: Once the above is working.. Then the following should add it to the existing ra-sp2016
 
 
-    # Write-Host "Deploying Azure Virtual Network Gateway..."
-    # New-AzureRmResourceGroupDeployment -Name "ra-adds-vpn-gateway-deployment" -ResourceGroupName $azureNetworkResourceGroup.ResourceGroupName `
-    #     -TemplateUri $virtualNetworkGatewayTemplate.AbsoluteUri -TemplateParameterFile $azureVirtualNetworkGatewayParametersFile
+    Write-Host "Deploying Azure Virtual Network Gateway..."
+    New-AzureRmResourceGroupDeployment -Name "ra-adds-vpn-gateway-deployment" -ResourceGroupName $azureNetworkResourceGroup.ResourceGroupName `
+        -TemplateUri $virtualNetworkGatewayTemplate.AbsoluteUri -TemplateParameterFile $azureVirtualNetworkGatewayParametersFile
 
-    # Write-Host "Creating Onpremise connection..."
-    # New-AzureRmResourceGroupDeployment -Name "ra-adds-onpremise-connection-deployment" `
-    #     -ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName `
-    #     -TemplateFile $onPremiseConnectionTemplateFile -TemplateParameterFile $onpremiseConnectionParametersFile
+    Write-Host "Creating Onpremise connection..."
+    New-AzureRmResourceGroupDeployment -Name "ra-adds-onpremise-connection-deployment" `
+        -ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName `
+        -TemplateFile $onPremiseConnectionTemplateFile -TemplateParameterFile $onpremiseConnectionParametersFile
 }
 
 if ($Mode -eq "AzureADDS" -Or $Mode -eq "All") {
     # Add the replication site.
     $onpremiseNetworkResourceGroup = Get-AzureRmResourceGroup -Name $onpremiseNetworkResourceGroupName
-    # Write-Host "Creating ADDS replication site..."
-    # New-AzureRmResourceGroupDeployment -Name "ra-adds-site-replication-deployment" `
-    #     -ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName `
-    #     -TemplateUri $virtualMachineExtensionsTemplate.AbsoluteUri -TemplateParameterFile $onpremiseReplicationSiteForestExtensionParametersFile
+    Write-Host "Creating ADDS replication site..."
+    New-AzureRmResourceGroupDeployment -Name "ra-adds-site-replication-deployment" `
+        -ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName `
+        -TemplateUri $virtualMachineExtensionsTemplate.AbsoluteUri -TemplateParameterFile $onpremiseReplicationSiteForestExtensionParametersFile
 
     # # # Deploy AD tier
     # # Write-Host "Creating ADDS resource group..."
@@ -168,12 +168,12 @@ if ($Mode -eq "AzureADDS" -Or $Mode -eq "All") {
     # # New-AzureRmResourceGroupDeployment -Name "ra-adds-adds-deployment" -ResourceGroupName $addsResourceGroup.ResourceGroupName `
     # #     -TemplateUri $virtualMachineTemplate.AbsoluteUri -TemplateParameterFile $azureAddsVirtualMachinesParametersFile
 
-    # $azureNetworkResourceGroup = Get-AzureRmResourceGroup -Name $azureNetworkResourceGroupName
-    # # Update DNS server to point to onpremise and azure
-    # Write-Host "Updating virtual network DNS..."
-    # New-AzureRmResourceGroupDeployment -Name "ra-adds-vnet-onpremise-azure-dns-deployment" `
-    #     -ResourceGroupName $azureNetworkResourceGroup.ResourceGroupName `
-    #     -TemplateUri $virtualNetworkTemplate.AbsoluteUri -TemplateParameterFile $azureVirtualNetworkOnpremiseAndAzureDnsParametersFile
+    $azureNetworkResourceGroup = Get-AzureRmResourceGroup -Name $azureNetworkResourceGroupName
+    # Update DNS server to point to onpremise and azure
+    Write-Host "Updating virtual network DNS..."
+    New-AzureRmResourceGroupDeployment -Name "ra-adds-vnet-onpremise-azure-dns-deployment" `
+        -ResourceGroupName $azureNetworkResourceGroup.ResourceGroupName `
+        -TemplateUri $virtualNetworkTemplate.AbsoluteUri -TemplateParameterFile $azureVirtualNetworkOnpremiseAndAzureDnsParametersFile
 
     # # Join the domain and create DCs
     # Write-Host "Creating ADDS domain controllers..."
