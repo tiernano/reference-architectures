@@ -15,6 +15,7 @@
           {
             "isPublic": "true",
             "subnetName": "web",
+            "publicIPAllocationMethod": "dynamic",
             "privateIPAllocationMethod": "Static",
             "startingIPAddress": "192.168.1.4",
             "enableIPForwarding": false,
