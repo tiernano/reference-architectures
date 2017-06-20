@@ -255,11 +255,11 @@ if ($Mode -eq "ConnectVPN" -Or $Mode -eq "All")
     Write-Host "ConnectVPN Section ---------------------------------------------------"
 
     # OnPremise Add the replication site.
-    $onpremiseNetworkResourceGroup = Get-AzureRmResourceGroup -Name $onpremiseNetworkResourceGroupName
-    Write-Host "Creating ADDS replication site..."
-    New-AzureRmResourceGroupDeployment -Name "ra-adds-site-replication-deployment" `
-        -ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName `
-        -TemplateUri $virtualMachineExtensionsTemplate.AbsoluteUri -TemplateParameterFile $onpremiseReplicationSiteForestExtensionParametersFile
+    # $onpremiseNetworkResourceGroup = Get-AzureRmResourceGroup -Name $onpremiseNetworkResourceGroupName
+    # Write-Host "Creating ADDS replication site..."
+    # New-AzureRmResourceGroupDeployment -Name "ra-adds-site-replication-deployment" `
+    #     -ResourceGroupName $onpremiseNetworkResourceGroup.ResourceGroupName `
+    #     -TemplateUri $virtualMachineExtensionsTemplate.AbsoluteUri -TemplateParameterFile $onpremiseReplicationSiteForestExtensionParametersFile
 
     $azureNetworkResourceGroup = Get-AzureRmResourceGroup -Name $azureNetworkResourceGroupName
     # Update DNS server to point to onpremise and azure
