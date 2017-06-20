@@ -18,7 +18,7 @@
                 "activeDirectorySettings": {
                   "adminUser": "testuser",
                   "adminPassword": "AweS0me@PW",
-                  "domainName": "contoso.com",
+                  "domainName": "contoso.local",
                   "azureSiteName": "Azure-Vnet-Site",
                   "onPremiseSiteName": "Default-First-Site-Name",
                   "azureAddressSpace": "10.0.0.0/16",
