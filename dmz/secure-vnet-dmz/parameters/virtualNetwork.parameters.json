@@ -4,8 +4,8 @@
   "parameters": {
     "virtualNetworkSettings": {
       "value": {
-        "name": "ra-vnet",
-        "resourceGroup": "ra-public-dmz-network-rg",
+        "name": "regsys-vnet",
+        "resourceGroup": "regsys-public-dmz-network-rg",
         "addressPrefixes": [
           "10.1.0.0/16"
         ],

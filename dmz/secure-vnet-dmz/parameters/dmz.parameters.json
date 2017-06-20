@@ -9,7 +9,7 @@
           "hasPublicEndpoint": "no",
           "domainNameLabel": "",
           "internalLoadBalancerSettings": {
-            "privateIPAddress": "10.0.0.10",
+            "privateIPAddress": "10.1.0.10",
             "subnetName": "private-dmz-in"
           }
         },
@@ -30,38 +30,21 @@
             }
           ],
           "virtualMachineSettings": {
-            "count": 2,
-            "size": "Standard_DS2_v2",
+            "count": 1,
+            "size": "Standard_DS1_v2",
             "adminUsername": "testuser",
             "adminPassword": "AweS0me@PW",
             "sshPublicKey": "",
             "osAuthenticationType": "password",
             "imageReference": {
-              "publisher": "Canonical",
-              "offer": "UbuntuServer",
-              "sku": "14.04.5-LTS",
-              "version": "latest"
-            },
-            "extensions": [
-              {
-                "name": "enable-iptables-routes",
-                "publisher": "Microsoft.OSTCExtensions",
-                "type": "CustomScriptForLinux",
-                "typeHandlerVersion": "1.5",
-                "autoUpgradeMinorVersion": true,
-                "settingsConfigMapperUri": "https://raw.githubusercontent.com/mspnp/template-building-blocks/v1.0.0/templates/resources/Microsoft.Compute/virtualMachines/extensions/vm-extension-passthrough-settings-mapper.json",
-                "settingsConfig": {
-                  "fileUris": [
-                    "https://raw.githubusercontent.com/mspnp/template-building-blocks/v1.0.0/templates/resources/Microsoft.Compute/virtualMachines/extensions/linux/enable-iptables-routes/enable-iptables-routes.sh"
-                  ],
-                  "commandToExecute": "bash enable-iptables-routes.sh internal 10.0.1.100"
-                },
-                "protectedSettingsConfig": { }
-              }
-            ]
+                "publisher": "MicrosoftWindowsServer",
+                "offer": "WindowsServer",
+                "sku": "2016-Datacenter",
+                "version": "latest"
+            }
           }
         },
-        "securedAddressSpace": [ "10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24" ],
+        "securedAddressSpace": [ "10.1.1.0/24", "10.1.2.0/24", "10.1.3.0/24" ],
         "subnets": {
           "useExistingSubnets": "yes",
           "inSubnet": {
@@ -78,8 +61,8 @@
     },
     "virtualNetworkSettings": {
       "value": {
-        "name": "ra-vnet",
-        "resourceGroup": "ra-public-dmz-network-rg"
+        "name": "regsys-vnet",
+        "resourceGroup": "regsys-public-dmz-network-rg"
       }
     }
   }

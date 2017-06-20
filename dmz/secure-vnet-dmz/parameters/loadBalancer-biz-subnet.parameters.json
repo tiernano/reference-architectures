@@ -2,16 +2,35 @@
   "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "virtualMachinesSettings": {
-      "value": {
-        "namePrefix": "ra-dmz-biz",
-        "computerNamePrefix": "biz",
-        "size": "Standard_DS1_v2",
-        "osType": "linux",
-        "adminUsername": "testuser",
-        "adminPassword": "AweS0me@PW",
-        "sshPublicKey": "",
-        "osAuthenticationType": "password",
+        "virtualMachinesSettings": {
+            "value": {
+            "count": 1,
+            "size": "Standard_DS1_v2",
+            "adminUsername": "testuser",
+            "adminPassword": "AweS0me@PW",
+            "sshPublicKey": "",
+            "osAuthenticationType": "password",
+            "imageReference": {
+                "publisher": "MicrosoftWindowsServer",
+                "offer": "WindowsServer",
+                "sku": "2016-Datacenter",
+                "version": "latest"
+            },
+             "dataDisks": {
+              "count": 1,
+              "properties": {
+                "diskSizeGB": 128,
+                "caching": "None",
+                "createOption": "Empty"
+              }
+        },
+        "osDisk": {
+          "caching": "ReadWrite"
+        },
+          "availabilitySet": {
+          "useExistingAvailabilitySet": "No",
+          "name": "biz-as"
+        },
         "nics": [
           {
             "isPublic": "false",
@@ -22,48 +41,12 @@
             "domainNameLabelPrefix": "",
             "dnsServers": [ ]
           }
-        ],
-        "imageReference": {
-          "publisher": "Canonical",
-          "offer": "UbuntuServer",
-          "sku": "14.04.5-LTS",
-          "version": "latest"
-        },
-        "dataDisks": {
-          "count": 1,
-          "properties": {
-            "diskSizeGB": 128,
-            "caching": "None",
-            "createOption": "Empty"
-          }
-        },
-        "osDisk": {
-          "caching": "ReadWrite"
-        },
-        "extensions": [
-          {
-            "name": "apache-config-ext",
-            "settingsConfigMapperUri": "https://raw.githubusercontent.com/mspnp/template-building-blocks/v1.0.0/templates/resources/Microsoft.Compute/virtualMachines/extensions/vm-extension-passthrough-settings-mapper.json",
-            "publisher": "Microsoft.OSTCExtensions",
-            "type": "CustomScriptForLinux",
-            "typeHandlerVersion": "1.5",
-            "autoUpgradeMinorVersion": true,
-            "settingsConfig": {
-              "fileUris": [ "https://raw.githubusercontent.com/mspnp/reference-architectures/master/dmz/secure-vnet-hybrid/extensions/linux/install-apache.sh" ],
-              "commandToExecute": "sh install-apache.sh"
-            },
-            "protectedSettingsConfig": { }
-          }
-        ],
-        "availabilitySet": {
-          "useExistingAvailabilitySet": "No",
-          "name": "biz-as"
-        }
-      }
-    },
+        ]
+    }
+  },
     "loadBalancerSettings": {
       "value": {
-        "name": "ra-dmz-biz-lb",
+        "name": "regsys-dmz-biz-lb",
         "frontendIPConfigurations": [
           {
             "name": "fe-config1",
@@ -100,24 +83,13 @@
             "name": "bep1",
             "nicIndex": 0
           }
-        ],
-        "inboundNatRules": [
-          {
-            "namePrefix": "ssh",
-            "frontendIPConfigurationName": "fe-config1",
-            "startingFrontendPort": 50000,
-            "backendPort": 22,
-            "natRuleType": "All",
-            "protocol": "Tcp",
-            "nicIndex": 0
-          }
         ]
       }
     },
     "virtualNetworkSettings": {
       "value": {
-        "name": "ra-vnet",
-        "resourceGroup": "ra-public-dmz-network-rg"
+        "name": "regsys-vnet",
+        "resourceGroup": "regsys-public-dmz-network-rg"
       }
     },
     "buildingBlockSettings": {
