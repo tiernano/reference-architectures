@@ -4,14 +4,14 @@
   "parameters": {
     "buildingBlocksRootUri": {
       "type": "string",
-      "defaultValue": "https://raw.githubusercontent.com/mspnp/template-building-blocks/v1.0.0/",
+      "defaultValue": "https://raw.githubusercontent.com/tiernano/template-building-blocks/v1.0.0/",
       "metadata": {
         "description": "Root path for templates"
       }
     },
     "parameterRootUri": {
       "type": "string",
-      "defaultValue": "https://raw.githubusercontent.com/mspnp/reference-architectures/master/dmz/secure-vnet-dmz/parameters/",
+      "defaultValue": "https://raw.githubusercontent.com/tiernano/reference-architectures/master/dmz/secure-vnet-dmz/parameters/",
       "metadata": {
         "decription": "Root path for parameters"
       }
