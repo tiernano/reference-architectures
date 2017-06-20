@@ -16,7 +16,7 @@
               "settingsConfigMapperUri": "https://raw.githubusercontent.com/mspnp/reference-architectures/master/identity/adds-extend-domain/templates/onpremise/ad-forest-extension-settings-mapper.json",
               "settingsConfig": {
                 "activeDirectorySettings": {
-                  "domainName": "contoso.com",
+                  "domainName": "contoso.local",
                   "domainNetbiosName": "contoso",
                   "safeModePassword": "Saf3M0de@PW"
                 },
