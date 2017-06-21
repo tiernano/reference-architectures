@@ -24,8 +24,7 @@
       },
       "parameter": {
         "webSubnetLoadBalancerAndVMs": "[concat(parameters('parameterRootUri'), 'loadBalancer-web-subnet.parameters.json')]",
-        "bizSubnetLoadBalancerAndVMs": "[concat(parameters('parameterRootUri'), 'loadBalancer-biz-subnet.parameters.json')]",
-        "dataSubnetLoadBalancerAndVMs": "[concat(parameters('parameterRootUri'), 'loadBalancer-data-subnet.parameters.json')]"
+        "bizSubnetLoadBalancerAndVMs": "[concat(parameters('parameterRootUri'), 'loadBalancer-biz-subnet.parameters.json')]"
       }
     }
   },
@@ -55,20 +54,6 @@
         },
         "parametersLink": {
           "uri": "[variables('templates').parameter.bizSubnetLoadBalancerAndVMs]"
-        }
-      }
-    },
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2015-01-01",
-      "name": "ra-data-lb-vms-deployment",
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[variables('templates').deployment.loadBalancer]"
-        },
-        "parametersLink": {
-          "uri": "[variables('templates').parameter.dataSubnetLoadBalancerAndVMs]"
         }
       }
     }
