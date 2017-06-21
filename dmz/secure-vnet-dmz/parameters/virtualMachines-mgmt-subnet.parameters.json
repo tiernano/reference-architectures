@@ -11,6 +11,7 @@
         "adminUsername": "testuser",
         "adminPassword": "AweS0me@PW",
         "sshPublicKey": "",
+        "licenseType": "Windows_Server",
         "osAuthenticationType": "password",
         "nics": [
           {
@@ -20,7 +21,7 @@
             "isPrimary": "true",
             "enableIPForwarding": false,
             "domainNameLabelPrefix": "",
-            "dnsServers": []
+            "dnsServers": [ ]
           }
         ],
         "imageReference": {
@@ -42,8 +43,9 @@
           "caching": "ReadWrite",
           "managedDisk": {
             "storageAccountType": "Premium_LRS"
-          },
-           "extensions": [
+          }
+        },
+        "extensions": [
           {
             "name": "IaaSAntimalware",
             "publisher": "Microsoft.Azure.Security",
@@ -69,24 +71,24 @@
             "protectedSettingsConfig": { }
           }
         ],
-          "availabilitySet": {
-            "useExistingAvailabilitySet": "No",
-            "name": "mgmt-as"
-          }
+        "availabilitySet": {
+          "useExistingAvailabilitySet": "No",
+          "name": "mgmt-as"
         }
-      },
-      "virtualNetworkSettings": {
-        "value": {
-          "name": "regsys-vnet",
-          "resourceGroup": "regsys-public-dmz-network-rg"
-        }
-      },
-      "buildingBlockSettings": {
-        "value": {
-          "storageAccountsCount": 1,
-          "vmCount": 1,
-          "vmStartIndex": 1
-        }
+      }
+    },
+    "virtualNetworkSettings": {
+      "value": {
+        "name": "regsys-vnet",
+        "resourceGroup": "regsys-public-dmz-network-rg"
+      }
+    },
+    "buildingBlockSettings": {
+      "value": {
+        "storageAccountsCount": 1,
+        "vmCount": 1,
+        "vmStartIndex": 1
       }
     }
   }
+}
