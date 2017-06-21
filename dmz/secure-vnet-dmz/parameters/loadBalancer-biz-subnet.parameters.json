@@ -24,7 +24,8 @@
           "createOption": "fromImage",
           "managedDisk": {
             "storageAccountType": "Premium_LRS"
-          }
+          },
+          "caching": "ReadWrite"
         },
         "dataDisks": {
           "count": 1,
