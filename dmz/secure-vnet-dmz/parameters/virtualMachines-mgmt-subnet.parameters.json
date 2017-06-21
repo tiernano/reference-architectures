@@ -45,6 +45,10 @@
             "storageAccountType": "Premium_LRS"
           }
         },
+        "availabilitySet": {
+          "useExistingAvailabilitySet": "No",
+          "name": "mgmt-as"
+        },
         "extensions": [
           {
             "name": "IaaSAntimalware",
@@ -70,11 +74,7 @@
             },
             "protectedSettingsConfig": { }
           }
-        ],
-        "availabilitySet": {
-          "useExistingAvailabilitySet": "No",
-          "name": "mgmt-as"
-        }
+        ]
       }
     },
     "virtualNetworkSettings": {
