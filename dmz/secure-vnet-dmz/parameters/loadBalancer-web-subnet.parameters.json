@@ -98,8 +98,9 @@
             "name": "bep1",
             "nicIndex": 0
           }
-        ]
-      }
+        ],
+         "inboundNatRules": []
+      }      
     },
     "virtualNetworkSettings": {
       "value": {
