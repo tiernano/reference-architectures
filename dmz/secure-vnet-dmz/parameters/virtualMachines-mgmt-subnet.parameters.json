@@ -21,7 +21,7 @@
             "isPrimary": "true",
             "enableIPForwarding": false,
             "domainNameLabelPrefix": "",
-            "dnsServers": [ ]
+            "dnsServers": []
           }
         ],
         "imageReference": {
