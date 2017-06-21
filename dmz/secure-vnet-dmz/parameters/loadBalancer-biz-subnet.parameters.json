@@ -13,6 +13,7 @@
         "adminPassword": "AweS0me@PW",
         "sshPublicKey": "",
         "osAuthenticationType": "password",
+        "licenseType": "Windows_Server",
         "imageReference": {
           "publisher": "MicrosoftWindowsServer",
           "offer": "WindowsServer",
@@ -20,7 +21,10 @@
           "version": "latest"
         },
         "osDisk": {
-          "caching": "ReadWrite"
+          "createOption": "fromImage",
+          "managedDisk": {
+            "storageAccountType": "Premium_LRS"
+          }
         },
         "dataDisks": {
           "count": 1,

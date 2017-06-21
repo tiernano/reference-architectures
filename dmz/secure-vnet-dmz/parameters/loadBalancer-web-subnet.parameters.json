@@ -13,11 +13,18 @@
         "adminPassword": "AweS0me@PW",
         "sshPublicKey": "",
         "osAuthenticationType": "password",
+        "licenseType": "Windows_Server",
         "imageReference": {
           "publisher": "MicrosoftWindowsServer",
           "offer": "WindowsServer",
           "sku": "2016-Datacenter",
           "version": "latest"
+        },
+        "osDisk": {
+          "createOption": "fromImage",
+          "managedDisk": {
+            "storageAccountType": "Premium_LRS"
+          }
         },
         "dataDisks": {
           "count": 1,
@@ -26,9 +33,6 @@
             "caching": "None",
             "createOption": "Empty"
           }
-        },
-        "osDisk": {
-          "caching": "ReadWrite"
         },
         "extensions": [
           {
