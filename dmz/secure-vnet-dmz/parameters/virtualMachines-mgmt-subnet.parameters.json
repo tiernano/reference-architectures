@@ -21,7 +21,7 @@
             "isPrimary": "true",
             "enableIPForwarding": false,
             "domainNameLabelPrefix": "",
-            "dnsServers": [ ]
+            "dnsServers": []
           }
         ],
         "imageReference": {
@@ -39,6 +39,10 @@
           }
         },
         "osDisk": {
+          "createOption": "fromImage",
+          "managedDisk": {
+            "storageAccountType": "Premium_LRS"
+          },
           "caching": "ReadWrite"
         },
         "extensions": [
@@ -64,7 +68,7 @@
                 "Processes": ""
               }
             },
-            "protectedSettingsConfig": { }
+            "protectedSettingsConfig": {}
           }
         ],
         "availabilitySet": {
