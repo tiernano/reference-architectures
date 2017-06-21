@@ -27,18 +27,38 @@
             }
           ],
           "virtualMachineSettings": {
+            "namePrefix": "regsys-dmz-web",
+            "computerNamePrefix": "web",
             "count": 1,
+            "osType": "windows",
             "size": "Standard_DS1_v2",
             "adminUsername": "testuser",
             "adminPassword": "AweS0me@PW",
             "sshPublicKey": "",
             "osAuthenticationType": "password",
+            "licenseType": "Windows_Server",
             "imageReference": {
               "publisher": "MicrosoftWindowsServer",
               "offer": "WindowsServer",
               "sku": "2016-Datacenter",
               "version": "latest"
-            }
+            },
+            "osDisk": {
+              "createOption": "fromImage",
+              "managedDisk": {
+                "storageAccountType": "Premium_LRS"
+              },
+              "caching": "ReadWrite"
+            },
+            "dataDisks": {
+              "count": 1,
+              "properties": {
+                "diskSizeGB": 128,
+                "caching": "None",
+                "createOption": "Empty"
+              }
+            },
+            "extensions": []
           }
         },
         "securedAddressSpace": [
