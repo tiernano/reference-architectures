@@ -7,6 +7,7 @@
         "namePrefix": "regsys-dmz-biz",
         "computerNamePrefix": "biz",
         "count": 1,
+        "osType": "windows",
         "size": "Standard_DS1_v2",
         "adminUsername": "testuser",
         "adminPassword": "AweS0me@PW",
