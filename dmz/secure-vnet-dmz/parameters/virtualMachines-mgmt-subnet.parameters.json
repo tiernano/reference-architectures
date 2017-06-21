@@ -11,6 +11,7 @@
         "adminUsername": "testuser",
         "adminPassword": "AweS0me@PW",
         "sshPublicKey": "",
+        "licenseType": "Windows_Server",
         "osAuthenticationType": "password",
         "nics": [
           {
