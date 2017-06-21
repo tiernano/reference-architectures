@@ -32,7 +32,7 @@
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
-      "name": "ra-web-lb-vms-deployment",
+      "name": "regsys-web-lb-vms-deployment",
       "properties": {
         "mode": "Incremental",
         "templateLink": {
@@ -46,7 +46,7 @@
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
-      "name": "ra-biz-lb-vms-deployment",
+      "name": "regsys-biz-lb-vms-deployment",
       "properties": {
         "mode": "Incremental",
         "templateLink": {
@@ -58,7 +58,5 @@
       }
     }
   ],
-  "outputs": {
-  }
+  "outputs": {}
 }
-

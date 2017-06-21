@@ -12,8 +12,10 @@
       "value": [
         {
           "name": "mgmt-nsg",
-          "subnets": [ "mgmt" ],
-          "networkInterfaces": [ ],
+          "subnets": [
+            "mgmt"
+          ],
+          "networkInterfaces": [],
           "securityRules": [
             {
               "name": "on-prem-rdp-allow",
@@ -74,8 +76,10 @@
         },
         {
           "name": "web-nsg",
-          "subnets": [ "web" ],
-          "networkInterfaces": [ ],
+          "subnets": [
+            "web"
+          ],
+          "networkInterfaces": [],
           "securityRules": [
             {
               "name": "on-prem-allow",
@@ -136,8 +140,10 @@
         },
         {
           "name": "biz-nsg",
-          "subnets": [ "biz" ],
-          "networkInterfaces": [ ],
+          "subnets": [
+            "biz"
+          ],
+          "networkInterfaces": [],
           "securityRules": [
             {
               "name": "web-allow",
@@ -184,60 +190,8 @@
               "protocol": "*"
             }
           ]
-        },
-        {
-          "name": "data-nsg",
-          "subnets": [ "data" ],
-          "networkInterfaces": [ ],
-          "securityRules": [
-            {
-              "name": "biz-allow",
-              "direction": "Inbound",
-              "priority": 100,
-              "sourceAddressPrefix": "10.1.2.0/24",
-              "sourcePortRange": "*",
-              "destinationAddressPrefix": "*",
-              "destinationPortRange": "*",
-              "access": "Allow",
-              "protocol": "*"
-            },
-            {
-              "name": "mgmt-rdp-allow",
-              "direction": "Inbound",
-              "priority": 200,
-              "sourceAddressPrefix": "10.1.0.128/25",
-              "sourcePortRange": "*",
-              "destinationAddressPrefix": "*",
-              "destinationPortRange": "3389",
-              "access": "Allow",
-              "protocol": "*"
-            },
-            {
-              "name": "mgmt-ssh-allow",
-              "direction": "Inbound",
-              "priority": 300,
-              "sourceAddressPrefix": "10.1.0.128/25",
-              "sourcePortRange": "*",
-              "destinationAddressPrefix": "*",
-              "destinationPortRange": "22",
-              "access": "Allow",
-              "protocol": "*"
-            },
-            {
-              "name": "vnet-deny",
-              "direction": "Inbound",
-              "priority": 400,
-              "sourceAddressPrefix": "*",
-              "sourcePortRange": "*",
-              "destinationAddressPrefix": "*",
-              "destinationPortRange": "*",
-              "access": "Deny",
-              "protocol": "*"
-            }
-          ]
         }
       ]
     }
   }
 }
-

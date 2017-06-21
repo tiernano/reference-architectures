@@ -20,15 +20,15 @@
             "isPrimary": "true",
             "enableIPForwarding": false,
             "domainNameLabelPrefix": "",
-            "dnsServers": [ ]
+            "dnsServers": []
           }
         ],
-         "imageReference": {
-                "publisher": "MicrosoftWindowsServer",
-                "offer": "WindowsServer",
-                "sku": "2016-Datacenter",
-                "version": "latest"
-            },
+        "imageReference": {
+          "publisher": "MicrosoftWindowsServer",
+          "offer": "WindowsServer",
+          "sku": "2016-Datacenter",
+          "version": "latest"
+        },
         "dataDisks": {
           "count": 1,
           "properties": {
@@ -63,7 +63,7 @@
                 "Processes": ""
               }
             },
-            "protectedSettingsConfig": { }
+            "protectedSettingsConfig": {}
           }
         ],
         "availabilitySet": {
@@ -87,4 +87,3 @@
     }
   }
 }
-

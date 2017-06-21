@@ -3,32 +3,32 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "virtualMachinesSettings": {
-            "value": {
-            "count": 1,
-            "size": "Standard_DS1_v2",
-            "adminUsername": "testuser",
-            "adminPassword": "AweS0me@PW",
-            "sshPublicKey": "",
-            "osAuthenticationType": "password",
-            "imageReference": {
-                "publisher": "MicrosoftWindowsServer",
-                "offer": "WindowsServer",
-                "sku": "2016-Datacenter",
-                "version": "latest"
-            },
-             "dataDisks": {
-              "count": 1,
-              "properties": {
-                "diskSizeGB": 128,
-                "caching": "None",
-                "createOption": "Empty"
-              }
+      "value": {
+        "count": 1,
+        "size": "Standard_DS1_v2",
+        "adminUsername": "testuser",
+        "adminPassword": "AweS0me@PW",
+        "sshPublicKey": "",
+        "osAuthenticationType": "password",
+        "imageReference": {
+          "publisher": "MicrosoftWindowsServer",
+          "offer": "WindowsServer",
+          "sku": "2016-Datacenter",
+          "version": "latest"
+        },
+        "dataDisks": {
+          "count": 1,
+          "properties": {
+            "diskSizeGB": 128,
+            "caching": "None",
+            "createOption": "Empty"
+          }
         },
         "osDisk": {
           "caching": "ReadWrite"
         },
-         "extensions": [
-           {
+        "extensions": [
+          {
             "name": "iis-config-ext",
             "settingsConfigMapperUri": "https://raw.githubusercontent.com/tiernano/template-building-blocks/v1.0.0/templates/resources/Microsoft.Compute/virtualMachines/extensions/vm-extension-passthrough-settings-mapper.json",
             "publisher": "Microsoft.Powershell",
@@ -39,10 +39,10 @@
               "modulesUrl": "https://raw.githubusercontent.com/tiernano/reference-architectures/master/virtual-machines/n-tier-windows/extensions/iisaspnet.ps1.zip",
               "configurationFunction": "iisaspnet.ps1\\iisaspnet"
             },
-            "protectedSettingsConfig": { }
+            "protectedSettingsConfig": {}
           }
-         ],
-          "availabilitySet": {
+        ],
+        "availabilitySet": {
           "useExistingAvailabilitySet": "No",
           "name": "web-as"
         },
@@ -54,11 +54,11 @@
             "isPrimary": "true",
             "enableIPForwarding": false,
             "domainNameLabelPrefix": "",
-            "dnsServers": [ ]
+            "dnsServers": []
           }
         ]
-    }
-  },
+      }
+    },
     "loadBalancerSettings": {
       "value": {
         "name": "regsys-dmz-web-lb",
@@ -116,4 +116,3 @@
     }
   }
 }
-
