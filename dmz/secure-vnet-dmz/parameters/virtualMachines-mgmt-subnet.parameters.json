@@ -38,17 +38,6 @@
             "createOption": "Empty"
           }
         },
-        "osDisk": {
-          "createOption": "fromImage",
-          "caching": "ReadWrite",
-          "managedDisk": {
-            "storageAccountType": "Premium_LRS"
-          }
-        },
-        "availabilitySet": {
-          "useExistingAvailabilitySet": "No",
-          "name": "mgmt-as"
-        },
         "extensions": [
           {
             "name": "IaaSAntimalware",
@@ -74,7 +63,18 @@
             },
             "protectedSettingsConfig": { }
           }
-        ]
+        ],
+        "osDisk": {
+          "createOption": "fromImage",
+          "caching": "ReadWrite",
+          "managedDisk": {
+            "storageAccountType": "Premium_LRS"
+          }
+        },
+        "availabilitySet": {
+          "useExistingAvailabilitySet": "No",
+          "name": "mgmt-as"
+        }        
       }
     },
     "virtualNetworkSettings": {
