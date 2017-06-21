@@ -4,6 +4,8 @@
   "parameters": {
     "virtualMachinesSettings": {
       "value": {
+        "namePrefix": "regsys-dmz-biz",
+        "computerNamePrefix": "biz",
         "count": 1,
         "size": "Standard_DS1_v2",
         "adminUsername": "testuser",
