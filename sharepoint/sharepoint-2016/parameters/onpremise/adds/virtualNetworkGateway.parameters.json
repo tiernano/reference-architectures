@@ -1,0 +1,35 @@
+﻿{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "virtualNetworkSettings": {
+      "value": {
+        "name": "ra-sp2016-vnet",
+        "resourceGroup": "ra-sp2016-network-rg"
+      }
+    },
+    "virtualNetworkGatewaySettings": {
+      "value": {
+        "name": "ra-adds-vpn-vgw",
+        "gatewayType": "Vpn",
+        "vpnType": "RouteBased",
+        "sku": "Standard"
+      }
+    },
+    "connectionSettings": {
+      "value": {
+        "name": "ra-adds-vpn-cn",
+        "connectionType": "Vnet2Vnet",
+        "sharedKey": "123secret",
+        "virtualNetworkGateway1": {
+          "name": "ra-adds-vpn-vgw",
+          "resourceGroup": "ra-sp2016-network-rg"
+        },
+        "virtualNetworkGateway2": {
+          "name": "ra-onprem-vpn-vgw",
+          "resourceGroup": "ra-onprem-sp2016-rg"
+        }
+      }
+    }
+  }
+}

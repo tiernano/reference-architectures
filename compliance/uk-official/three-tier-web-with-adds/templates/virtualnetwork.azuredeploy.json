@@ -4,7 +4,7 @@
   "parameters": {
   },
   "variables": {
-    "templateBaseUrl": "https://raw.githubusercontent.com/mspnp/template-building-blocks/master/",
+    "templateBaseUrl": "https://raw.githubusercontent.com/mspnp/template-building-blocks/v1.0.0/",
     "localRepoBaseUrl": "https://raw.githubusercontent.com/mspnp/reference-architectures/master/compliance/uk-official/three-tier-web-with-adds/",
     "buildingBlocks": {
       "virtualNetworkTemplate": "[concat(variables('templateBaseUrl'), 'templates/buildingBlocks/vnet-n-subnet/azuredeploy.json')]",

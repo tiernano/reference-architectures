@@ -1,0 +1,143 @@
+﻿{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "loadBalancerSettings": {
+      "value": {
+        "name": "sap-wdp-lb",
+        "frontendIPConfigurations": [
+          {
+            "name": "sap-wdp-lb-fe-config",
+            "loadBalancerType": "internal",
+            "domainNameLabel": "",
+            "internalLoadBalancerSettings": {
+              "privateIPAddress": "10.0.1.250",
+              "subnetName": "SAPAppsSubnet"
+            }
+          }
+        ],
+        "loadBalancingRules": [
+          {
+            "name": "wdpRule",
+            "frontendPort": 44300,
+            "backendPort": 44300,
+            "protocol": "Tcp",
+            "backendPoolName": "backend-pool",
+            "frontendIPConfigurationName": "sap-wdp-lb-fe-config",
+            "probeName": "healthProbe",
+            "enableFloatingIP": false
+          }
+        ],
+        "probes": [
+          {
+            "name": "healthProbe",
+            "port": 44300,
+            "protocol": "Tcp",
+            "requestPath": null
+          }
+        ],
+        "backendPools": [
+          {
+            "name": "backend-pool",
+            "nicIndex": 0
+          }
+        ],
+        "inboundNatRules": []
+      }
+    },
+    "virtualMachinesSettings": {
+      "value": {
+        "namePrefix": "sap-wdp",
+        "computerNamePrefix": "sap-wdp",
+        "size": "Standard_DS11_v2",
+        "adminUsername": "testuser",
+        "adminPassword": "AweS0me@PW",
+        "osType": "windows",
+        "osAuthenticationType": "password",
+        "sshPublicKey": "",
+        "nics": [
+          {
+            "isPublic": "false",
+            "isPrimary": "true",
+            "subnetName": "SAPAppsSubnet",
+            "privateIPAllocationMethod": "static",
+            "startingIPAddress": "10.0.1.25",
+            "enableIPForwarding": false,
+            "domainNameLabelPrefix": "",
+            "dnsServers": [
+              "10.0.4.4",
+              "10.0.4.5"
+            ]
+          },
+          {
+            "isPublic": "false",
+            "isPrimary": "false",
+            "subnetName": "MgmtSubnet",
+            "privateIPAllocationMethod": "static",
+            "startingIPAddress": "10.0.3.25",
+            "enableIPForwarding": false,
+            "domainNameLabelPrefix": "",
+            "dnsServers": [
+              "10.0.4.4",
+              "10.0.4.5"
+            ]
+          }
+        ],
+        "imageReference": {
+          "publisher": "MicrosoftWindowsServer",
+          "offer": "WindowsServer",
+          "sku": "2012-R2-Datacenter",
+          "version": "latest"
+        },
+        "dataDisks": {
+          "count": 0,
+          "properties": {
+            "diskSizeGB": 128,
+            "caching": "None",
+            "createOption": "Empty"
+          }
+        },
+        "osDisk": {
+          "caching": "ReadWrite"
+        },
+        "extensions": [
+          {
+            "name": "join-ad-domain",
+            "publisher": "Microsoft.Compute",
+            "type": "JsonADDomainExtension",
+            "typeHandlerVersion": "1.3",
+            "autoUpgradeMinorVersion": true,
+            "settingsConfigMapperUri": "https://raw.githubusercontent.com/mspnp/template-building-blocks/v1.0.0/templates/resources/Microsoft.Compute/virtualMachines/extensions/vm-extension-passthrough-settings-mapper.json",
+            "settingsConfig": {
+              "Name": "contoso.com",
+              "OUPath": "",
+              "User": "contoso.com\\testuser",
+              "Restart": true,
+              "Options": 3
+            },
+            "protectedSettingsConfig": {
+              "Password": "AweS0me@PW"
+            }
+          }
+        ],
+        "availabilitySet": {
+          "useExistingAvailabilitySet": "No",
+          "name": "sap-wdp-as"
+        }
+      }
+    },
+    "virtualNetworkSettings": {
+      "value": {
+        "name": "ra-sap-hana-vnet",
+        "resourceGroup": "sap-hana-infrastructure"
+      }
+    },
+    "buildingBlockSettings": {
+      "value": {
+        "storageAccountsCount": 1,
+        "vmCount": 2,
+        "vmStartIndex": 1
+      }
+    }
+  }
+}

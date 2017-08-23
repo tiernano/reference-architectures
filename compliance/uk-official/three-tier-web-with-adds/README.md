@@ -177,7 +177,7 @@ Guidance and Recommendations
 > (NSG) are recommended for each subnet to provide a second level of
 > protection against inbound traffic bypassing an incorrectly configured
 > or disabled gateway. Example - [ARM Template for deploying an
-> NSG](https://github.com/mspnp/template-building-blocks/tree/master/templates/buildingBlocks/networkSecurityGroups).
+> NSG](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/networkSecurityGroups).
 >
 > **Securing public endpoints:** The internet gateway exposes
 > application services to users through the internet. Traffic accessing
@@ -194,7 +194,7 @@ Guidance and Recommendations
 > the on-premises datacentre through IPSEC VPN using the Azure VPN
 > Gateway. Customers should ensure that they are using an appropriate
 > VPN Gateway to connect to Azure. Example [VPN Gateway ARM
-> Template](https://github.com/mspnp/template-building-blocks/tree/master/templates/buildingBlocks/vpn-gateway-vpn-connection)**.**
+> Template](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/vpn-gateway-vpn-connection)**.**
 > Customers running large-scale, mission critical workloads with big data requirements may wish to consider a hybrid network architecture using
 > [ExpressRoute](https://docs.microsoft.com/en-gb/azure/guidance/guidance-hybrid-network-expressroute)
 > to ensure private network connectivity to Microsoft cloud services

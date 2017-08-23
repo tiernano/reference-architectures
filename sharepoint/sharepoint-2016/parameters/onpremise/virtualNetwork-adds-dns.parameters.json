@@ -1,0 +1,36 @@
+﻿{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "virtualNetworkSettings": {
+      "value": {
+        "name": "ra-onprem-vnet",
+        "resourceGroup": "ra-onprem-sp2016-rg",
+        "addressPrefixes": [
+          "192.168.0.0/16"
+        ],
+        "subnets": [
+          {
+            "name": "user",
+            "addressPrefix": "192.168.1.0/24"
+          },          
+          {
+            "name": "adds",
+            "addressPrefix": "192.168.0.0/24"
+          },
+          {
+            "name": "GatewaySubnet",
+            "addressPrefix": "192.168.255.224/27"
+          }
+        ],
+        "dnsServers": [
+          "192.168.0.4",
+          "192.168.0.5",
+          "10.0.4.4",
+          "10.0.4.5",
+          "168.63.129.16"
+        ]
+      }
+    }
+  }
+}
