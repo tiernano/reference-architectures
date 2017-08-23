@@ -6,7 +6,7 @@
       "value": {
         "namePrefix": "regsys-dmz-jb",
         "computerNamePrefix": "cn",
-        "size": "Standard_DS1_v2",
+        "size": "Standard_A2_v2",
         "osType": "windows",
         "adminUsername": "testuser",
         "adminPassword": "AweS0me@PW",

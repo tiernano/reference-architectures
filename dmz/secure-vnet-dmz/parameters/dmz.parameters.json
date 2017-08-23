@@ -9,7 +9,7 @@
           "hasPublicEndpoint": "no",
           "domainNameLabel": "",
           "internalLoadBalancerSettings": {
-            "privateIPAddress": "10.1.0.10",
+            "privateIPAddress": "10.2.0.10",
             "subnetName": "private-dmz-in"
           }
         },
@@ -31,7 +31,7 @@
           ],
           "virtualMachineSettings": {
             "count": 1,
-            "size": "Standard_DS1_v2",
+            "size": "Standard_A2_v2",
             "adminUsername": "testuser",
             "adminPassword": "AweS0me@PW",
             "sshPublicKey": "",
@@ -45,9 +45,9 @@
           }
         },
         "securedAddressSpace": [
-          "10.1.1.0/24",
-          "10.1.2.0/24",
-          "10.1.3.0/24"
+          "10.2.1.0/24",
+          "10.2.2.0/24",
+          "10.2.3.0/24"
         ],
         "subnets": {
           "useExistingSubnets": "yes",
